@@ -93,7 +93,9 @@ const constructGraph = async (task) => {
         task.progressEachDay[date] === null ? 0 : task.progressEachDay[date],
     }))
     .filter((obj) =>
-      moment(obj.date).isSameOrBefore(moment().format("DD/MM/YYYY"))
+      moment(obj.date, "DD/MM/YYYY").isSameOrBefore(
+        moment(moment().format("DD/MM/YYYY"), "DD/MM/YYYY")
+      )
     )
     .sort((obj1, obj2) => {
       const dateA = moment(obj1.date, "DD/MM/YYYY");
